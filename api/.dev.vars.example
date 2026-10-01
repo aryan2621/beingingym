@@ -1,0 +1,7 @@
+AUTH0_DOMAIN=your-tenant.us.auth0.com
+AUTH0_AUDIENCE=https://api.beingingym
+FIREBASE_PROJECT_ID=your-firebase-project
+FIREBASE_CLIENT_EMAIL=firebase-adminsdk-xxx@your-firebase-project.iam.gserviceaccount.com
+# The "private_key" value from the service account JSON, in double quotes, keeping its \n escapes
+FIREBASE_PRIVATE_KEY=
+YOUTUBE_API_KEY=your-youtube-data-api-key

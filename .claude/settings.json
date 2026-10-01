@@ -1,0 +1,42 @@
+{
+    "permissions": {
+        "deny": [
+            "Read(**/.env)",
+            "Read(**/.env.local)",
+            "Read(**/.env.*.local)",
+            "Read(**/.env.development)",
+            "Read(**/.env.production)",
+            "Read(**/.env.test)",
+            "Read(**/.xcode.env.local)",
+            "Read(**/.dev.vars)",
+            "Read(**/*.pem)",
+            "Read(**/*.key)",
+            "Read(**/*.crt)",
+            "Read(**/*.p8)",
+            "Read(**/*.p12)",
+            "Read(**/*.pfx)",
+            "Read(**/*.jks)",
+            "Read(**/*.keystore)",
+            "Read(**/*credentials*)",
+            "Read(**/*service-account*.json)",
+            "Read(**/*serviceAccount*.json)",
+            "Read(**/*firebase-adminsdk*.json)",
+            "Read(**/google-services.json)",
+            "Read(**/GoogleService-Info.plist)",
+            "Edit(**/.env)",
+            "Edit(**/.env.local)",
+            "Edit(**/.env.*.local)",
+            "Edit(**/.env.production)",
+            "Edit(**/.dev.vars)",
+            "Edit(**/*.pem)",
+            "Edit(**/*.key)",
+            "Edit(**/*credentials*)",
+            "Edit(**/*firebase-adminsdk*.json)",
+            "Bash(cat *.env*)",
+            "Bash(cat *.dev.vars*)",
+            "Bash(cat *credentials*)",
+            "Bash(wrangler secret list*)",
+            "Bash(npx wrangler secret list*)"
+        ]
+    }
+}

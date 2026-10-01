@@ -1,0 +1,30 @@
+# Keep secrets and private files out of Cursor's AI context and indexing.
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+**/.xcode.env.local
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+*.crt
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*credentials*
+*service-account*.json
+*serviceAccount*.json
+*firebase-adminsdk*.json
+google-services.json
+GoogleService-Info.plist
+.wrangler/
+.open-next/
+
+# Example env files have no secrets and are useful context
+!.env.example
+!.dev.vars.example

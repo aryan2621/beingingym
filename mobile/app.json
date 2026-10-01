@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "BeingInGym",
+    "slug": "beingingym",
+    "version": "1.0.0",
+    "scheme": "beingingym",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.beingingym.app"
+    },
+    "android": {
+      "package": "com.beingingym.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#C2410C",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-web-browser",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "BeingInGym uses your location to record the route of your runs and walks.",
+          "locationAlwaysAndWhenInUsePermission": "BeingInGym keeps recording your run while the screen is off.",
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true
+        }
+      ],
+      "./plugins/withReleaseSigning"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

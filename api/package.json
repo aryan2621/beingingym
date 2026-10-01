@@ -1,0 +1,27 @@
+{
+    "name": "beingingym-api",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "wrangler dev",
+        "deploy": "wrangler deploy",
+        "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
+        "cf-typegen": "wrangler types",
+        "seed": "tsx scripts/seed.ts",
+        "dev:lan": "wrangler dev --ip 0.0.0.0"
+    },
+    "dependencies": {
+        "@hono/zod-validator": "0.9.1",
+        "hono": "4.13.9",
+        "jose": "6.2.12",
+        "zod": "4.6.5"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "5.20260924.1",
+        "@types/node": "24.13.6",
+        "tsx": "4.23.15",
+        "typescript": "7.0.2",
+        "wrangler": "4.137.0"
+    }
+}

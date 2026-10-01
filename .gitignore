@@ -1,0 +1,29 @@
+# Secrets and private files (applies to web/, api/ and mobile/)
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+.dev.vars
+.dev.vars.*
+*.pem
+*.key
+*.p8
+*.p12
+*.pfx
+*.jks
+*.keystore
+*credentials*.txt
+*credentials*.json
+*service-account*.json
+*serviceAccount*.json
+*firebase-adminsdk*.json
+google-services.json
+GoogleService-Info.plist
+
+# Example env files are safe to commit
+!.env.example
+!.dev.vars.example
+
+.DS_Store
