@@ -22,8 +22,5 @@
 google-services.json
 GoogleService-Info.plist
 
-# Example env files are safe to commit
-!.env.example
-!.dev.vars.example
 
 .DS_Store

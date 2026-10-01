@@ -29,7 +29,7 @@ export default function SignIn() {
             </View>
 
             <View style={{ gap: space(3) }}>
-                {missingConfig.length > 0 && <ErrorText>Missing app config: {missingConfig.join(', ')}. See mobile/.env.example.</ErrorText>}
+                {missingConfig.length > 0 && <ErrorText>Missing app config: {missingConfig.join(', ')}. See the README.</ErrorText>}
                 {error && <ErrorText>{error}</ErrorText>}
                 <Button title='Log in or sign up' icon='log-in-outline' size='lg' onPress={signIn} loading={signingIn} disabled={missingConfig.length > 0} />
                 <Text style={{ color: c.muted, textAlign: 'center', fontSize: 13 }}>Use the same Google or email account as on the web.</Text>

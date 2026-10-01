@@ -59,7 +59,47 @@ Set `NEXT_PUBLIC_CONTACT_EMAIL` in `web/.env.local` (and at build time for deplo
 1. **Applications → Create → Native**, name it `BeingInGym Mobile`.
     - Allowed Callback URLs and Allowed Logout URLs: `beingingym://callback`, plus the `exp://…/--/callback` URL shown at the bottom of the app's sign-in screen when testing in Expo Go.
     - **Connections** tab: enable Google and Username-Password-Authentication.
-2. Copy `mobile/.env.example` to `mobile/.env` and fill in the Native app's client ID.
+2. Put the Native app's client ID in `mobile/.env` (see [Environment variables](#environment-variables)).
+
+## Environment variables
+
+Each project reads its own file. None of these files are committed.
+
+**`api/.dev.vars`** (production: `npx wrangler secret put <NAME>`)
+
+| Variable | Value |
+| --- | --- |
+| `AUTH0_DOMAIN` | Auth0 tenant domain, e.g. `your-tenant.us.auth0.com` (no `https://`) |
+| `AUTH0_AUDIENCE` | Identifier of the Auth0 API, e.g. `https://api.beingingym` |
+| `FIREBASE_PROJECT_ID` | `project_id` from the Firebase service account JSON |
+| `FIREBASE_CLIENT_EMAIL` | `client_email` from the same JSON |
+| `FIREBASE_PRIVATE_KEY` | `private_key` from the same JSON, in double quotes, keeping its `\n` escapes |
+| `YOUTUBE_API_KEY` | YouTube Data API v3 key |
+
+`WEB_ORIGIN` (allowed CORS origins, comma-separated) is set in `api/wrangler.jsonc`.
+
+**`web/.env`** (production: Wrangler secrets; `NEXT_PUBLIC_*` are inlined at build time)
+
+| Variable | Value |
+| --- | --- |
+| `AUTH0_DOMAIN` | Auth0 tenant domain |
+| `AUTH0_CLIENT_ID` / `AUTH0_CLIENT_SECRET` | From the Auth0 Regular Web Application |
+| `AUTH0_SECRET` | 32+ random bytes: `openssl rand -hex 32` |
+| `APP_BASE_URL` | Where the web app runs, e.g. `http://localhost:3000` |
+| `AUTH0_AUDIENCE` | Same as the API's |
+| `NEXT_PUBLIC_API_URL` | API base URL, e.g. `http://localhost:8787` |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Optional; inbox that "Contact us" opens in Gmail |
+| `NEXT_PUBLIC_APK_URL` | Optional; overrides the GitHub Releases APK link |
+
+**`mobile/.env`** (all public values, bundled into the app; in CI they come from repository variables)
+
+| Variable | Value |
+| --- | --- |
+| `EXPO_PUBLIC_AUTH0_DOMAIN` | Auth0 tenant domain |
+| `EXPO_PUBLIC_AUTH0_CLIENT_ID` | Client ID of the Auth0 **Native** application |
+| `EXPO_PUBLIC_AUTH0_AUDIENCE` | Same as the API's |
+| `EXPO_PUBLIC_API_URL` | API base URL; on a phone use your laptop's LAN IP, e.g. `http://192.168.1.10:8787` |
+| `EXPO_PUBLIC_WEB_URL` | Web dashboard URL, opened from the Profile screen |
 
 ## Run locally
 
@@ -67,13 +107,11 @@ Set `NEXT_PUBLIC_CONTACT_EMAIL` in `web/.env.local` (and at build time for deplo
 # API, http://localhost:8787
 cd api
 npm install
-cp .dev.vars.example .dev.vars   # fill in Auth0, Firebase and YouTube values
 npm run dev
 
 # Web, http://localhost:3000
 cd web
 npm install
-cp .env.example .env.local       # fill in Auth0 values; generate AUTH0_SECRET with: openssl rand -hex 32
 npm run dev
 ```
 
@@ -132,4 +170,4 @@ Release: `git tag v1.0.0 && git push origin v1.0.0`.
 
 ## Secrets
 
-Secrets live only in `.env.local`, `.dev.vars` and Wrangler secrets, and are ignored by git (`.gitignore`), Cursor (`.cursorignore`) and Claude Code (`permissions.deny` in `.claude/settings.json`). Only the `*.example` files are committed.
+Secrets live only in `web/.env`, `api/.dev.vars`, `mobile/.env` and Wrangler secrets. They are ignored by git (`.gitignore`), Cursor (`.cursorignore`) and Claude Code (`permissions.deny` in `.claude/settings.json`).

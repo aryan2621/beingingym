@@ -25,6 +25,3 @@ GoogleService-Info.plist
 .wrangler/
 .open-next/
 
-# Example env files have no secrets and are useful context
-!.env.example
-!.dev.vars.example
